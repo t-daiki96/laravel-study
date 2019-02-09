@@ -10,7 +10,9 @@ use App\Http\Requests\ArticleRequest;
 class ArticlesController extends Controller
 {
     public function index() {
-        $articles = Article::all();
+        $articles = Article::latest('published_at')->latest('created_at')
+        ->published()
+        ->get();
 
         return view('articles.index', compact('articles'));
     }

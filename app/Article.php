@@ -1,7 +1,7 @@
 <?php
 
 namespace App;
-
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Article extends Model
@@ -15,5 +15,9 @@ class Article extends Model
 
     public function setTitleAttribute ($value) {
         $this->attributes['title'] = mb_strtolower($value);
+    }
+
+    public function scopePublished($query) {
+        $query->where('published_at', '<=', Carbon::now());
     }
 }
