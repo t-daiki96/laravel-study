@@ -19,10 +19,14 @@
             編集
         </a>
 
+        {!! delete_form(['articles', $article->id]) !!}
+
         <a href="{{ action('ArticlesController@index') }}"
           class="btn btn-secondary float-right"
         >
             一覧へ戻る
         </a>
+
+
     </div>
 @endsection
